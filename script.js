@@ -77,3 +77,29 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
+  });
+};
+
+console.log(accounts);
+createUsernames(accounts);
+
+//////////////////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+let euroToUSD = 1.1;
+
+let movementsUSD = movements.map(mov => mov * euroToUSD);
+
+const movementsDescriptions = movements.map((mov, i) => {
+  return `Movement ${i + 1}: You ${
+    mov > 0 ? 'deposited' : 'withdrew'
+  } ${Math.abs(mov)}`;
+});
