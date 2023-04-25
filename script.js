@@ -78,6 +78,12 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(acc => {
     acc.username = acc.owner
@@ -95,7 +101,6 @@ createUsernames(accounts);
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 let euroToUSD = 1.1;
-
 let movementsUSD = movements.map(mov => mov * euroToUSD);
 
 const movementsDescriptions = movements.map((mov, i) => {
@@ -103,3 +108,26 @@ const movementsDescriptions = movements.map((mov, i) => {
     mov > 0 ? 'deposited' : 'withdrew'
   } ${Math.abs(mov)}`;
 });
+
+const deposits = movements.filter(mov => mov > 0);
+const widthdrawals = movements.filter(mov => mov < 0);
+const balance = movements.reduce((total, mov) => total + mov);
+
+const selectMax = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+});
+
+console.log(selectMax);
+
+const dogs1 = [5, 2, 4, 1, 15, 8, 3];
+const dogs2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAges.filter(age => age >= 18);
+  const avg = adults.reduce((acc, age) => acc + age) / adults.length;
+  return avg
+};
+
+console.log(calcAverageHumanAge(dogs1));
