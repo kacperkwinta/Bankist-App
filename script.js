@@ -190,6 +190,22 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+///////////////////////////////////////
+// LOAN MECHANICS
+///////////////////////////////////////
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // add movement
+    currentAccount.movements.push(amount);
+    // update UI
+    updateUI(currentAccount);
+    // clear input field
+    inputLoanAmount.value = '';
+  }
+});
+
 ////////////////////////////////////////
 // CLOSE ACCOUNT
 ////////////////////////////////////////
@@ -209,7 +225,7 @@ btnClose.addEventListener('click', function (e) {
 });
 
 //////////////////////////////////////////////////////////////
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // let euroToUSD = 1.1;
 // let movementsUSD = movements.map(mov => mov * euroToUSD);
@@ -240,3 +256,5 @@ btnClose.addEventListener('click', function (e) {
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(account);
+
+console.log(movements.some(mov => mov > 0));
