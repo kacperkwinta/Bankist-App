@@ -18,11 +18,13 @@ This project was built using HTML, CSS, and JavaScript.
 
 ## Getting Started
 To get a copy of this project, you can clone the repository using git:
-
 `git clone https://github.com/{YOUR_USERNAME}/bankist-app.git`
 
 ## Usage
 Open `index.html` in a web browser to use the app.
+
+Or use Live Site URL 🔴: [click!](https://kacperkwinta.github.io/Bankist-App/)
+
 
 ### Logging In
 To log in, enter the username and PIN for one of the test accounts:
